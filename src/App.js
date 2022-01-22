@@ -1,19 +1,27 @@
 import './App.css';
+import {
+  Routes,
+  Route,
+} from 'react-router-dom';
+// import { Provider } from 'react-redux';
+
+import HomePage from './components/HomePage/HomePage';
+import DetailsPage from './components/DetailsPage/DetailsPage';
+import Navbar from './components/Navbar/Navbar';
+// import store from './redux/configureStore';
 
 function App() {
   return (
+  // <Provider store={store}>
     <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/detailsPage" element={<DetailsPage />} />
+        <Route path="*" element={<HomePage />} />
+      </Routes>
     </div>
+  // </Provider>
   );
 }
 
