@@ -1,7 +1,5 @@
 ## Air Pollution
 
-This project is Air Pollution website, that allows users to add and remove books using the UI.
-
 
 ## Built With
 
@@ -13,7 +11,7 @@ This project is Air Pollution website, that allows users to add and remove books
 
 ## Live Demo
 
-[Live Demo link](https://mre55.github.io/bookstore/)
+
 
 ## Getting Started
 
@@ -35,7 +33,7 @@ You have to have Node.js installed before working on this project.
 
 ### Usage
 
-You can start using Book store website by cloning the repository.
+You can start using Air Pollution website by cloning the repository.
 
 
 ## Authors
