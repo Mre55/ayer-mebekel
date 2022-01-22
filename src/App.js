@@ -15,11 +15,13 @@ function App() {
   // <Provider store={store}>
     <div className="App">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/detailsPage" element={<DetailsPage />} />
-        <Route path="*" element={<HomePage />} />
-      </Routes>
+      <div className="pageContainer">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/detailsPage" element={<DetailsPage />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </div>
     </div>
   // </Provider>
   );
