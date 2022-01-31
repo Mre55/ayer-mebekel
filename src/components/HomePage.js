@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchWeather } from "../redux/weather/weatherReducer";
-import store from "../redux/configureStore";
+import { fetchWeather } from '../redux/weather/weatherReducer';
+import store from '../redux/configureStore';
 
 function HomePage() {
   const weatherFromStore = useSelector((state) => state.weatherReducer);
@@ -10,12 +10,12 @@ function HomePage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!(store.getState().weatherReducer.length > 0)) {
+    if (!(Object.keys(store.getState().weatherReducer).length)) {
       dispatch(fetchWeather());
     }
   }, []);
 
-  let { coord = {}, list = [] } = weatherFromStore;
+  const { coord = {}, list = [] } = weatherFromStore;
 
   return (
     <div className="pl-5">
@@ -35,7 +35,10 @@ function HomePage() {
         </p>
         <br />
         <h5>Date and time, Unix, UTC</h5>
-        <p>Date and time is :{list.map((listData) => listData?.dt)}</p>
+        <p>
+          Date and time is :
+          {list.map((listData) => listData?.dt)}
+        </p>
         <br />
         <h5> Air Quality Index.</h5>
         <p>
