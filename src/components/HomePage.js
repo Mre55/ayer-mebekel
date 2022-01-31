@@ -1,93 +1,53 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchWeather } from '../redux/weather/weatherReducer';
-import store from '../redux/configureStore';
+import {
+  // fetchWeather,
+  fetchWeatherWithoutDispatch,
+} from '../redux/weather/weatherReducer';
+// import store from '../redux/configureStore';
+import DetailsPage from './DetailsPage';
 
 function HomePage() {
-  const weatherFromStore = useSelector((state) => state.weatherReducer);
+  // const weatherFromStore = useSelector((state) => state.weatherReducer);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!(Object.keys(store.getState().weatherReducer).length)) {
-      dispatch(fetchWeather());
-    }
+  const [firstPageData, setFirstPageData] = useState();
+
+  const fetchNewData = async (lat, long) => {
+    const withoutDi = await fetchWeatherWithoutDispatch(lat, long);
+    console.log('without D ', withoutDi);
+    setFirstPageData(withoutDi);
+  };
+
+  useEffect(async () => {
+    await fetchNewData(50, 50);
+    // if (!Object.keys(store.getState().weatherReducer).length) {
+    //   // dispatch(fetchWeather(8.9806, 38.7578));
+    // }
   }, []);
 
-  const { coord = {}, list = [] } = weatherFromStore;
+  // const { coord = {}, list = [] } = weatherFromStore;
+
 
   return (
-    <div className="pl-5">
+    <div>
       <div>Hello this is the home page.</div>
+      <button className="border border-y-neutral-300" onClick={async () => await fetchNewData(8, 37)}>
+        User entered a new values to
+        {' '}
+        {firstPageData?.coord?.lat}
+        {' '}
+        and
+        {' '}
+        {firstPageData?.coord?.lon}
+      </button>
+      {/* <DetailsPage coord={coord} list={list} /> */}
+      {firstPageData?.coord && (
+        <DetailsPage coord={firstPageData.coord} list={firstPageData.list} />
+      )}
       <br />
-      <div>
-        <h3>Here are the datas: </h3>
-        <br />
-        <h5>Coordinates from the specified location </h5>
-        <p>
-          Longitude:
-          {coord.lon}
-        </p>
-        <p>
-          Longitude:
-          {coord.lat}
-        </p>
-        <br />
-        <h5>Date and time, Unix, UTC</h5>
-        <p>
-          Date and time is :
-          {list.map((listData) => listData?.dt)}
-        </p>
-        <br />
-        <h5> Air Quality Index.</h5>
-        <p>
-          Air Quality Index is:
-          {list.map((listData) => listData.main?.aqi)}
-        </p>
-        <br />
-        <h5>Data polluting gases concentration of:</h5>
-        <p>
-          CO(Carbon monoxide):
-          {list.map((listData) => listData.components?.co)}
-          μg/m3
-        </p>
-        <p>
-          NO(Nitrogen monoxide):
-          {list.map((listData) => listData.components?.no)}
-          μg/m3
-        </p>
-        <p>
-          NO2(Nitrogen dioxide):
-          {list.map((listData) => listData.components?.no2)}
-          μg/m3
-        </p>
-        <p>
-          O3(Ozone):
-          {list.map((listData) => listData.components?.o3)}
-          μg/m3
-        </p>
-        <p>
-          SO2(Sulphur dioxide):
-          {list.map((listData) => listData.components?.so2)}
-          μg/m3
-        </p>
-        <p>
-          PM2.5(Fine particles matter):
-          {list.map((listData) => listData.components?.pm2_5)}
-          μg/m3
-        </p>
-        <p>
-          PM10(Coarse particulate matter):
-          {list.map((listData) => listData.components?.pm10)}
-          μg/m3
-        </p>
-        <p>
-          NH3(Ammonia):
-          {list.map((listData) => listData.components?.nh3)}
-          μg/m3
-        </p>
-      </div>
     </div>
   );
 }
