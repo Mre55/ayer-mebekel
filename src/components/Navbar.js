@@ -15,7 +15,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <nav className="mb-5">
+    <nav className="">
       <div className="flex items-center justify-between pl-2 ring-4">
         <h2 className="text-3xl font-bold text-sky-500">Air pollution</h2>
         <ul className="flex justify-between pr-8 w-40">

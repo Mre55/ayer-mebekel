@@ -1,78 +1,68 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React from "react";
+import { PropTypes } from "prop-types";
 
 function DetailsPage(props) {
   const { coord, list } = props;
 
   return (
     <div>
-      <div className="pl-5">
-        <div>
-          <h3>Here are the datas: </h3>
-          <br />
-          <h5>Coordinates from the specified location </h5>
-          <p>
-            Longitude:
-            {coord.lon}
-          </p>
-          <p>
-            Longitude:
-            {coord.lat}
-          </p>
-          <br />
-          <h5>Date and time, Unix, UTC</h5>
-          <p>
-            Date and time is :
-            {list.map((listData) => listData?.dt)}
-          </p>
-          <br />
-          <h5> Air Quality Index.</h5>
-          <p>
-            Air Quality Index is:
-            {list.map((listData) => listData.main?.aqi)}
-          </p>
-          <br />
-          <h5>Data polluting gases concentration of:</h5>
-          <p>
-            CO(Carbon monoxide):
-            {list.map((listData) => listData.components?.co)}
-            μg/m3
-          </p>
-          <p>
-            NO(Nitrogen monoxide):
-            {list.map((listData) => listData.components?.no)}
-            μg/m3
-          </p>
-          <p>
-            NO2(Nitrogen dioxide):
-            {list.map((listData) => listData.components?.no2)}
-            μg/m3
-          </p>
-          <p>
-            O3(Ozone):
-            {list.map((listData) => listData.components?.o3)}
-            μg/m3
-          </p>
-          <p>
-            SO2(Sulphur dioxide):
-            {list.map((listData) => listData.components?.so2)}
-            μg/m3
-          </p>
-          <p>
-            PM2.5(Fine particles matter):
-            {list.map((listData) => listData.components?.pm2_5)}
-            μg/m3
-          </p>
-          <p>
-            PM10(Coarse particulate matter):
-            {list.map((listData) => listData.components?.pm10)}
-            μg/m3
-          </p>
-          <p>
-            NH3(Ammonia):
-            {list.map((listData) => listData.components?.nh3)}
-            μg/m3
-          </p>
+      <div className="w-screen text-white items-center">
+        
+        <div className="flex flex-col items-end justify-center bg-[#5788e6] w-screen h-44 px-4">
+          <h5 className="text-4xl font-bold">CURRENT</h5>
+          <h5 className="text-4xl font-bold">COORDINATE</h5>
+          <p className="text-lg font-light">Longitude: {coord.lon}</p>
+          <p className="text-lg font-light">Latitude: {coord.lat}</p>
+        </div>
+
+        <div className="flex py-5 px-4 justify-between bg-[#4369b2] w-screen">
+          <p>Date and time, Unix, UTC </p>
+          <p>{list.map((listData) => listData?.dt)}</p>
+        </div>
+
+        <div className="flex py-5 px-4 justify-between bg-[#5788e6] w-screen">
+          <p> Air Quality Index</p>
+          <p>{list.map((listData) => listData.main?.aqi)}</p>
+        </div>
+
+        <div className="flex py-5 px-4 justify-between bg-[#4369b2] w-screen">
+          <p>CO(Carbon monoxide)</p>
+          <p>{list.map((listData) => listData.components?.co)} μg/m3</p>
+        </div>
+
+        <div className="flex py-5 px-4 justify-between bg-[#5788e6] w-screen">
+          <p>NO(Nitrogen monoxide)</p>
+          <p>{list.map((listData) => listData.components?.no)} μg/m3</p>
+        </div>
+
+        <div className="flex py-5 px-4 justify-between bg-[#4369b2] w-screen">
+          <p>NO2(Nitrogen dioxide)</p>
+          <p>{list.map((listData) => listData.components?.no2)} μg/m3</p>
+        </div>
+
+        <div className="flex py-5 px-4 justify-between bg-[#5788e6] w-screen">
+          <p>O3(Ozone)</p>
+          <p>{list.map((listData) => listData.components?.o3)} μg/m3</p>
+        </div>
+
+        <div className="flex py-5 px-4 justify-between bg-[#4369b2] w-screen">
+          <p>SO2(Sulphur dioxide)</p>
+          <p>{list.map((listData) => listData.components?.so2)} μg/m3</p>
+        </div>
+
+        <div className="flex py-5 px-4 justify-between bg-[#5788e6] w-screen">
+          <p>PM2.5(Fine particles matter)</p>
+          <p>{list.map((listData) => listData.components?.pm2_5)} μg/m3</p>
+        </div>
+
+        <div className="flex py-5 px-4 justify-between bg-[#4369b2] w-screen">
+          <p>PM10(Coarse particulate matter)</p>
+          <p>{list.map((listData) => listData.components?.pm10)} μg/m3</p>
+        </div>
+
+        <div className="flex py-5 px-4 justify-between bg-[#5788e6] w-screen">
+          <p>NH3(Ammonia)</p>
+          <p>{list.map((listData) => listData.components?.nh3)} μg/m3</p>
         </div>
       </div>
     </div>

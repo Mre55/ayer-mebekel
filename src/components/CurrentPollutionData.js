@@ -66,7 +66,7 @@ const CurrentPollutionData = (props) => {
             <img src={detailIcon} alt="detail" />
           </button>
           <div className="text-white flex flex-col items-end">
-            <h4 className=" text-lg font-bold font-bold">HOSSANA</h4>
+            <h4 className="text-lg font-bold font-bold">HOSSANA</h4>
             <p>
               {" "}
               Air Quality:
