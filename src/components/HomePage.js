@@ -71,7 +71,7 @@ const HomePage = () => {
           fetchNewData={fetchNewData}
         />
 
-        <div className={`grid grid-cols-2 gap-6 p-4 ${detailPage ? 'hidden' : ''}`}>
+        <div className={`${detailPage ? 'hidden' : ''}`}>
           <CurrentPollutionData
             seeMore={seeMore}
             firstPageData={firstPageData}
