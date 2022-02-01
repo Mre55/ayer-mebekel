@@ -6,7 +6,6 @@ function DetailsPage(props) {
 
   return (
     <div>
-      Hello this is details page.
       <div className="pl-5">
         <div>
           <h3>Here are the datas: </h3>
@@ -80,9 +79,9 @@ function DetailsPage(props) {
   );
 }
 
-DetailsPage.propTypes = {
-  coord: PropTypes.instanceOf(Object).isRequired,
-  list: PropTypes.instanceOf(Array).isRequired,
-};
+// DetailsPage.propTypes = {
+//   coord: PropTypes.instanceOf(Object).isRequired,
+//   list: PropTypes.instanceOf(Array).isRequired,
+// };
 
 export default DetailsPage;

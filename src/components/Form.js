@@ -9,14 +9,16 @@ const Form = (props) => {
 
   const handleLatChange = (e) => {
     setLat(e.target.value);
+    console.log('e is ', e.target.value)
   };
   const handleLongChange = (e) => {
     setLong(e.target.value);
   };
 
   return (
-    <div>
-      <h2 className="text-4xl font-bold">Forecast air pollution data</h2>
+    <div className="flex bg-[#5788e6] w-screen text-white px-3 items-center">
+      <h2 className="text-3xl font-bold">Forecast air pollution data</h2>
+      <div className="text-center py-4">
       <form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -24,10 +26,9 @@ const Form = (props) => {
         }}
       >
         <label htmlFor="latitude">
-          Latitude
-          <br />
+          <p className="text-lg">Latitude</p>
           <input
-            className="border-solid border-2 border-sky-500"
+            className="border-solid border-2 border-gray-50 my-1 rounded-full text-center text-black"
             name="lat"
             id="latitude"
             type="number"
@@ -39,10 +40,9 @@ const Form = (props) => {
           <br />
         </label>
         <label htmlFor="longitude">
-          Longitude
-          <br />
+          <p className="text-lg">Longitude</p>
           <input
-            className="border-solid border-2 border-sky-500"
+            className="border-solid border-2 border-gray-50 my-1 rounded-full text-center text-black"
             name="long"
             id="longitude"
             type="number"
@@ -55,11 +55,12 @@ const Form = (props) => {
         </label>
         <input
           onClick={() => seeMore('New')}
-          className="bg-blue-600 text-white p-2 w-40 text-lg  rounded mt-4"
+          className="bg-blue-600 text-white w-20 text-lg rounded mt-4"
           type="submit"
           value="Submit"
         />
       </form>
+      </div>
     </div>
   );
 };

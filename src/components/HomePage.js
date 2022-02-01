@@ -63,7 +63,7 @@ const HomePage = () => {
   const selectedCityData = getSelectedCityData();
 
   return (
-    <div>
+    <div className="">
       <div className={`${detailPage ? 'hidden' : ''}`}>
 
         <Form

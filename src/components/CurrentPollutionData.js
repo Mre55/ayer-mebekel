@@ -11,7 +11,7 @@ const CurrentPollutionData = (props) => {
   } = props;
 
   return (
-    <div>
+    <div className="">
       <h2 className="text-4xl font-bold">Current air pollution data</h2>
       <div className="border-solid border-2 border-sky-500">
         <h4>Addis Ababa</h4>
@@ -78,16 +78,80 @@ const CurrentPollutionData = (props) => {
           Detail
         </button>
       </div>
+      <div className="border-solid border-2 border-sky-500">
+        <h4>London</h4>
+        <p>
+          {' '}
+          Air Quality:
+          {fourthPageData?.coord
+            && fourthPageData.list.map((listData) => listData.main?.aqi)}
+        </p>
+        <button
+          className="bg-blue-600 text-white p-2 w-40 text-lg  rounded"
+          onClick={() => seeMore('London')}
+          type="button"
+        >
+          Detail
+        </button>
+      </div>
+      <div className="border-solid border-2 border-sky-500">
+        <h4>London</h4>
+        <p>
+          {' '}
+          Air Quality:
+          {fourthPageData?.coord
+            && fourthPageData.list.map((listData) => listData.main?.aqi)}
+        </p>
+        <button
+          className="bg-blue-600 text-white p-2 w-40 text-lg  rounded"
+          onClick={() => seeMore('London')}
+          type="button"
+        >
+          Detail
+        </button>
+      </div>
+      <div className="border-solid border-2 border-sky-500">
+        <h4>London</h4>
+        <p>
+          {' '}
+          Air Quality:
+          {fourthPageData?.coord
+            && fourthPageData.list.map((listData) => listData.main?.aqi)}
+        </p>
+        <button
+          className="bg-blue-600 text-white p-2 w-40 text-lg  rounded"
+          onClick={() => seeMore('London')}
+          type="button"
+        >
+          Detail
+        </button>
+      </div>
+      <div className="border-solid border-2 border-sky-500">
+        <h4>London</h4>
+        <p>
+          {' '}
+          Air Quality:
+          {fourthPageData?.coord
+            && fourthPageData.list.map((listData) => listData.main?.aqi)}
+        </p>
+        <button
+          className="bg-blue-600 text-white p-2 w-40 text-lg  rounded"
+          onClick={() => seeMore('London')}
+          type="button"
+        >
+          Detail
+        </button>
+      </div>
     </div>
   );
 };
 
-CurrentPollutionData.propTypes = {
-  seeMore: PropTypes.func.isRequired,
-  firstPageData: PropTypes.instanceOf(Object).isRequired,
-  secondPageData: PropTypes.instanceOf(Object).isRequired,
-  thirdPageData: PropTypes.instanceOf(Object).isRequired,
-  fourthPageData: PropTypes.instanceOf(Object).isRequired,
-};
+// CurrentPollutionData.propTypes = {
+//   seeMore: PropTypes.func.isRequired,
+//   firstPageData: PropTypes.instanceOf(Object).isRequired,
+//   secondPageData: PropTypes.instanceOf(Object).isRequired,
+//   thirdPageData: PropTypes.instanceOf(Object).isRequired,
+//   fourthPageData: PropTypes.instanceOf(Object).isRequired,
+// };
 
 export default CurrentPollutionData;
