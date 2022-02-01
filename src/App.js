@@ -4,9 +4,9 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import HomePage from './components/HomePage/HomePage';
-import DetailsPage from './components/DetailsPage/DetailsPage';
-import Navbar from './components/Navbar/Navbar';
+import HomePage from './components/HomePage';
+import DetailsPage from './components/DetailsPage';
+import Navbar from './components/Navbar';
 import store from './redux/configureStore';
 
 function App() {
