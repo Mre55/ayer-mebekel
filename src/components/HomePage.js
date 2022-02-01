@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  // fetchWeather,
   fetchWeatherWithoutDispatch,
 } from '../redux/weather/weatherReducer';
-// import store from '../redux/configureStore';
+
 import DetailsPage from './DetailsPage';
 import Form from './Form';
-import InitialData from './InitialData';
+import CurrentPollutionData from './CurrentPollutionData';
 
 function HomePage() {
+  
   const [newPageData, setNewPageData] = useState();
   const [firstPageData, setFirstPageData] = useState();
   const [secondPageData, setSecondPageData] = useState();
@@ -74,7 +73,7 @@ function HomePage() {
         />
 
         <div className={`grid grid-cols-2 gap-6 p-4 ${detailPage ? 'hidden' : ''}`}>
-          <InitialData
+          <CurrentPollutionData
             seeMore={seeMore}
             firstPageData={firstPageData}
             secondPageData={secondPageData}

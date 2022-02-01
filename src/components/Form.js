@@ -13,6 +13,8 @@ function Form(props) {
   };
 
   return (
+      <div>
+      <h2 className="text-4xl font-bold">Forecast air pollution data</h2>
     <form
       onSubmit={async (e) => {
         e.preventDefault();
@@ -50,6 +52,7 @@ function Form(props) {
         value="Submit"
       />
     </form>
+    </div>
   );
 }
 
