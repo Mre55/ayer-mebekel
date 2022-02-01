@@ -7,8 +7,6 @@ function DetailsPage(props) {
     <div>
       Hello this is details page.
       <div className="pl-5">
-        <div>Hello this is the home page.</div>
-        <br />
         <div>
           <h3>Here are the datas: </h3>
           <br />
