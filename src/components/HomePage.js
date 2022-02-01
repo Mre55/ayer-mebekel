@@ -9,7 +9,6 @@ import {
 import DetailsPage from './DetailsPage';
 
 function HomePage() {
-  
   // const weatherFromStore = useSelector((state) => state.weatherReducer);
 
   // const dispatch = useDispatch();
@@ -19,6 +18,7 @@ function HomePage() {
   const [thirdPageData, setThirdPageData] = useState();
   const [fourthPageData, setFourthPageData] = useState();
   const [selectedCity, setSelectedCity] = useState();
+  const [detailPage, setDetailPage] = useState(false);
 
   const fetchNewData = async (lat, long) => {
     const withoutDi = await fetchWeatherWithoutDispatch(lat, long);
@@ -54,55 +54,59 @@ function HomePage() {
 
   const seeMore = (city) => {
     setSelectedCity(city);
+    setDetailPage(!detailPage);
   };
 
   const selectedCityData = getSelectedCityData();
 
   return (
-    <div className="grid grid-cols-2 gap-6 p-4">
-      <div className="border-solid border-2 border-sky-500">
-        <h4>Addis Ababa</h4>
-        <p>
-          {' '}
-          Air Quality:
-          {firstPageData?.coord
-            && firstPageData.list.map((listData) => listData.main?.aqi)}
-        </p>
+    <div>
+      <div className={`grid grid-cols-2 gap-6 p-4 ${detailPage ? 'hidden' : ''}`}>
+        <div className="border-solid border-2 border-sky-500">
+          <h4>Addis Ababa</h4>
+          <p>
+            {' '}
+            Air Quality:
+            {firstPageData?.coord
+              && firstPageData.list.map((listData) => listData.main?.aqi)}
+          </p>
 
-        <button onClick={() => seeMore('Addis Ababa')}>Detail</button>
+          <button className="bg-blue-600 text-white p-2 w-40 text-lg  rounded" onClick={() => seeMore('Addis Ababa')}>Detail</button>
+        </div>
+        <div className="border-solid border-2 border-sky-500">
+          <h4>Hawassa</h4>
+          <p>
+            {' '}
+            Air Quality:
+            {secondPageData?.coord
+              && secondPageData.list.map((listData) => listData.main?.aqi)}
+          </p>
+          <button className="bg-blue-600 text-white p-2 w-40 text-lg  rounded" onClick={() => seeMore('Hawassa')}>Detail</button>
+        </div>
+        <div className="border-solid border-2 border-sky-500">
+          <h4>Hossana</h4>
+          <p>
+            {' '}
+            Air Quality:
+            {thirdPageData?.coord
+              && thirdPageData.list.map((listData) => listData.main?.aqi)}
+          </p>
+          <button className="bg-blue-600 text-white p-2 w-40 text-lg  rounded" onClick={() => seeMore('Hossana')}>Detail</button>
+        </div>
+        <div className="border-solid border-2 border-sky-500">
+          <h4>London</h4>
+          <p>
+            {' '}
+            Air Quality:
+            {fourthPageData?.coord
+              && fourthPageData.list.map((listData) => listData.main?.aqi)}
+          </p>
+          <button className="bg-blue-600 text-white p-2 w-40 text-lg  rounded" onClick={() => seeMore('London')}>Detail</button>
+        </div>
+        <br />
       </div>
-      <div className="border-solid border-2 border-sky-500">
-        <h4>Hawassa</h4>
-        <p>
-          {' '}
-          Air Quality:
-          {secondPageData?.coord
-            && secondPageData.list.map((listData) => listData.main?.aqi)}
-        </p>
-        <button onClick={() => seeMore('Hawassa')}>Detail</button>
-      </div>
-      <div className="border-solid border-2 border-sky-500">
-        <h4>Hossana</h4>
-        <p>
-          {' '}
-          Air Quality:
-          {thirdPageData?.coord
-            && thirdPageData.list.map((listData) => listData.main?.aqi)}
-        </p>
-        <button onClick={() => seeMore('Hossana')}>Detail</button>
-      </div>
-      <div className="border-solid border-2 border-sky-500">
-        <h4>London</h4>
-        <p>
-          {' '}
-          Air Quality:
-          {fourthPageData?.coord
-            && fourthPageData.list.map((listData) => listData.main?.aqi)}
-        </p>
-        <button onClick={() => seeMore('London')}>Detail</button>
-      </div>
-      <br />
-      <div>
+      <div className={`${detailPage ? '' : 'hidden'}`}>
+        <button className="bg-blue-600 text-white p-2 w-40 text-lg  rounded" onClick={() => seeMore()}>Back</button>
         {selectedCityData?.coord && (
           <DetailsPage
             coord={selectedCityData.coord}
