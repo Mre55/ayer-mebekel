@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 
 function DetailsPage(props) {
   const { coord, list } = props;
@@ -78,5 +79,10 @@ function DetailsPage(props) {
     </div>
   );
 }
+
+DetailsPage.propTypes = {
+  coord: PropTypes.instanceOf(Object).isRequired,
+  list: PropTypes.instanceOf(Array).isRequired,
+};
 
 export default DetailsPage;

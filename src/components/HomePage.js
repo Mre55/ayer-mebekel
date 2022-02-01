@@ -8,8 +8,7 @@ import DetailsPage from './DetailsPage';
 import Form from './Form';
 import CurrentPollutionData from './CurrentPollutionData';
 
-function HomePage() {
-  
+const HomePage = () => {
   const [newPageData, setNewPageData] = useState();
   const [firstPageData, setFirstPageData] = useState();
   const [secondPageData, setSecondPageData] = useState();
@@ -99,6 +98,6 @@ function HomePage() {
       </div>
     </div>
   );
-}
+};
 
 export default HomePage;

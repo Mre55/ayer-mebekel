@@ -15,7 +15,7 @@ export const fetchWeatherWithoutDispatch = async (lat, lon) => {
   try {
     return await data.json();
   } catch (error) {
-    console.error(error);
+    return error;
   }
 };
 
