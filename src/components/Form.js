@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { PropTypes } from "prop-types";
+import React, { useState } from 'react';
+import { PropTypes } from 'prop-types';
 
 const Form = (props) => {
   const { seeMore, fetchNewData } = props;
@@ -9,14 +9,14 @@ const Form = (props) => {
 
   const handleLatChange = (e) => {
     setLat(e.target.value);
-    console.log("e is ", e.target.value);
+    console.log('e is ', e.target.value);
   };
   const handleLongChange = (e) => {
     setLong(e.target.value);
   };
 
   return (
-    <div className="flex bg-[#5788e6] w-screen text-white px-3 items-center">
+    <div className="flex bg-[#5788e6] w-screen text-white px-3 items-center md: justify-evenly">
       <h2 className="text-3xl font-bold">Forecast air pollution data</h2>
       <div className="text-center py-4">
         <form
@@ -54,7 +54,7 @@ const Form = (props) => {
             <br />
           </label>
           <input
-            onClick={() => seeMore("New")}
+            onClick={() => seeMore('New')}
             className="bg-blue-600 text-white w-20 text-lg rounded mt-4"
             type="submit"
             value="Submit"

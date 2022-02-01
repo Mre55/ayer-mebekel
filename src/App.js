@@ -6,14 +6,14 @@ import { Provider } from 'react-redux';
 
 import HomePage from './components/HomePage';
 import DetailsPage from './components/DetailsPage';
-import Navbar from './components/Navbar';
+import TopBar from './components/TopBar';
 import store from './redux/configureStore';
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <Navbar />
+        <TopBar />
         <div className="pageContainer">
           <Routes>
             <Route path="/" element={<HomePage />} />
