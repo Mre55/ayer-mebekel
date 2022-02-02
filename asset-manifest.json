@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/ayer-mebekel/static/css/main.82a3720e.css",
-    "main.js": "/ayer-mebekel/static/js/main.f160419e.js",
+    "main.js": "/ayer-mebekel/static/js/main.19dbc318.js",
     "static/media/detailIcon.png": "/ayer-mebekel/static/media/detailIcon.9e6b9df236170b20e4d1.png",
     "static/media/backIcon.png": "/ayer-mebekel/static/media/backIcon.dd3350ea1f97d74702cf.png",
     "index.html": "/ayer-mebekel/index.html",
     "main.82a3720e.css.map": "/ayer-mebekel/static/css/main.82a3720e.css.map",
-    "main.f160419e.js.map": "/ayer-mebekel/static/js/main.f160419e.js.map"
+    "main.19dbc318.js.map": "/ayer-mebekel/static/js/main.19dbc318.js.map"
   },
   "entrypoints": [
     "static/css/main.82a3720e.css",
-    "static/js/main.f160419e.js"
+    "static/js/main.19dbc318.js"
   ]
 }
