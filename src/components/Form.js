@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 
 const Form = (props) => {
-  const { seeMore, fetchNewData } = props;
+  const { seeMore, fetchDataByInput } = props;
 
   const [lat, setLat] = useState();
   const [long, setLong] = useState();
@@ -21,7 +21,7 @@ const Form = (props) => {
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            await fetchNewData(e.target[0].value, e.target[1].value);
+            await fetchDataByInput(e.target[0].value, e.target[1].value);
           }}
         >
           <label htmlFor="latitude">
@@ -53,7 +53,7 @@ const Form = (props) => {
             <br />
           </label>
           <input
-            onClick={() => seeMore('New')}
+            onClick={() => seeMore()}
             className="bg-blue-600 text-white w-20 text-lg rounded mt-4"
             type="submit"
             value="Submit"
@@ -66,7 +66,7 @@ const Form = (props) => {
 
 Form.propTypes = {
   seeMore: PropTypes.func.isRequired,
-  fetchNewData: PropTypes.func.isRequired,
+  fetchDataByInput: PropTypes.func.isRequired,
 };
 
 export default Form;

@@ -13,13 +13,13 @@ export const fetchWeatherDispatch = () => async (dispatch) => {
     },
   );
   try {
-    let D = await data.json();
-    dispatch(fetchWeatherSuccess(D));
+    let fetchedData = await data.json();
+    dispatch(fetchWeatherSuccess(fetchedData));
   } catch (error) {
     return error;
   }
 };
-export const fetchWeatherWithoutDispatch = async (lat, lon) => {
+export const fetchWeatherWithoutDispatch = (lat, lon) => async (dispatch) => {
   const data = await fetch(
     `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=120c2559b5a8678ebed46cf9ff276f28`,
     {
@@ -27,10 +27,10 @@ export const fetchWeatherWithoutDispatch = async (lat, lon) => {
     },
   );
   try {
-    let D = await data.json();
-    dispatch(fetchWeatherSuccess(D));
+    let fetchedData = await data.json();
+    dispatch(fetchWeatherSuccess(fetchedData));
   } catch (error) {
-    return error;
+    console.log(error)
   }
 };
 

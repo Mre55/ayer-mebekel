@@ -2,23 +2,31 @@ import React, { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchWeatherDispatch } from '../redux/weather/weatherReducer';
+import { fetchWeatherWithoutDispatch } from "../redux/weather/weatherReducer";
 import store from '../redux/configureStore';
 
-function DetailsPage() {
+function DetailsPage(props) {
+
+  const { coord, list } = props;
   
-  const weatherReducer = useSelector((state) => state.weatherReducer);
+  // console.log('coord in the details page is ', coord)
+  // console.log('list in the details page is ', list)
+  // const weatherReducer = useSelector((state) => state.weatherReducer);
   
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  
+  // const { coord = {}, list = [] } = weatherReducer;
 
-  useEffect(() => {
-    if (Object.keys(store.getState().weatherReducer).length === 0) {
-      dispatch(fetchWeatherDispatch());
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (Object.keys(store.getState().weatherReducer).length === 0) {
+  //     dispatch(fetchWeatherWithoutDispatch(coord.lon, coord.lat));
+  //   }
+  // }, []);
 
-  console.log('incoming weatherReducer ', weatherReducer)
+  // const dataFromApi = dispatch(fetchWeatherWithoutDispatch(coord.lon, coord.lat));
+      
+  // console.log('incoming weatherReducer in detail page ', weatherReducer)
 
-  const { coord = {}, list = [] } = weatherReducer;
 
   return (
     <div>

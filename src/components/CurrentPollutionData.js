@@ -1,15 +1,17 @@
-import React, { useEffect }  from "react";
+import React, { useEffect, useState } from "react";
 // import { PropTypes } from "prop-types";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import detailIcon from "../images/detailIcon.png";
 import { Link } from "react-router-dom";
-import { fetchWeatherDispatch } from '../redux/weather/weatherReducer';
-import store from '../redux/configureStore';
+import { fetchWeatherDispatch } from "../redux/weather/weatherReducer";
+import store from "../redux/configureStore";
 
-const CurrentPollutionData = () => {
+const CurrentPollutionData = (props) => {
+  const {
+    seeMore,
+  } = props;
 
   const weatherReducer = useSelector((state) => state.weatherReducer);
-
   const { list = [] } = weatherReducer;
 
   return (
@@ -19,15 +21,13 @@ const CurrentPollutionData = () => {
       </h2>
       <div className="grid grid-cols-2">
         <div className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4">
-          <Link to={"/Addis Ababa"}>
-            <button
-              className="w-7"
-              // onClick={() => seeMore('Addis Ababa')}
-              type="button"
-            >
-              <img src={detailIcon} alt="detail" />
-            </button>
-          </Link>
+          <button
+            className="w-7"
+            onClick={() => seeMore("Addis Ababa")}
+            type="button"
+          >
+            <img src={detailIcon} alt="detail" />
+          </button>
           <div className="text-white flex flex-col items-end">
             <h4 className=" text-lg font-bold font-bold">ADDIS ABABA</h4>
             <p>
@@ -39,15 +39,13 @@ const CurrentPollutionData = () => {
         </div>
 
         <div className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4">
-          <Link to={"/Hawassa"}>
-            <button
-              className="w-7"
-              // onClick={() => seeMore("Hawassa")}
-              type="button"
-            >
-              <img src={detailIcon} alt="detail" />
-            </button>
-          </Link>
+          <button
+            className="w-7"
+            onClick={() => seeMore("Hawassa")}
+            type="button"
+          >
+            <img src={detailIcon} alt="detail" />
+          </button>
           <div className="text-white flex flex-col items-end">
             <h4 className=" text-lg font-bold font-bold">HAWASSA</h4>
             <p>
@@ -61,15 +59,13 @@ const CurrentPollutionData = () => {
 
       <div className="grid grid-cols-2">
         <div className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4">
-          <Link to={"/Hossana"}>
-            <button
-              className="w-7"
-              // onClick={() => seeMore("Hossana")}
-              type="button"
-            >
-              <img src={detailIcon} alt="detail" />
-            </button>
-          </Link>
+          <button
+            className="w-7"
+            onClick={() => seeMore("Hossana")}
+            type="button"
+          >
+            <img src={detailIcon} alt="detail" />
+          </button>
           <div className="text-white flex flex-col items-end">
             <h4 className="text-lg font-bold font-bold">HOSSANA</h4>
             <p>
@@ -80,15 +76,13 @@ const CurrentPollutionData = () => {
           </div>
         </div>
         <div className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4">
-          <Link to={"/London"}>
-            <button
-              className="w-7"
-              // onClick={() => seeMore("London")}
-              type="button"
-            >
-              <img src={detailIcon} alt="detail" />
-            </button>
-          </Link>
+          <button
+            className="w-7"
+            onClick={() => seeMore("London")}
+            type="button"
+          >
+            <img src={detailIcon} alt="detail" />
+          </button>
           <div className="text-white flex flex-col items-end">
             <h4 className=" text-lg font-bold font-bold">LONDON</h4>
             <p>
@@ -101,15 +95,13 @@ const CurrentPollutionData = () => {
       </div>
       <div className="grid grid-cols-2">
         <div className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4">
-          <Link to={"/Addis Ababa"}>
-            <button
-              className="w-7"
-              // onClick={() => seeMore('Addis Ababa')}
-              type="button"
-            >
-              <img src={detailIcon} alt="detail" />
-            </button>
-          </Link>
+          <button
+            className="w-7"
+            onClick={() => seeMore("Addis Ababa")}
+            type="button"
+          >
+            <img src={detailIcon} alt="detail" />
+          </button>
           <div className="text-white flex flex-col items-end">
             <h4 className=" text-lg font-bold font-bold">ADDIS ABABA</h4>
             <p>
@@ -121,15 +113,13 @@ const CurrentPollutionData = () => {
         </div>
 
         <div className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4">
-          <Link to={"/Hawassa"}>
-            <button
-              className="w-7"
-              // onClick={() => seeMore("Hawassa")}
-              type="button"
-            >
-              <img src={detailIcon} alt="detail" />
-            </button>
-          </Link>
+          <button
+            className="w-7"
+            onClick={() => seeMore("Hawassa")}
+            type="button"
+          >
+            <img src={detailIcon} alt="detail" />
+          </button>
           <div className="text-white flex flex-col items-end">
             <h4 className=" text-lg font-bold font-bold">HAWASSA</h4>
             <p>
@@ -143,15 +133,13 @@ const CurrentPollutionData = () => {
 
       <div className="grid grid-cols-2">
         <div className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4">
-          <Link to={"/Hossana"}>
-            <button
-              className="w-7"
-              // onClick={() => seeMore("Hossana")}
-              type="button"
-            >
-              <img src={detailIcon} alt="detail" />
-            </button>
-          </Link>
+          <button
+            className="w-7"
+            onClick={() => seeMore("Hossana")}
+            type="button"
+          >
+            <img src={detailIcon} alt="detail" />
+          </button>
           <div className="text-white flex flex-col items-end">
             <h4 className="text-lg font-bold font-bold">HOSSANA</h4>
             <p>
@@ -162,15 +150,13 @@ const CurrentPollutionData = () => {
           </div>
         </div>
         <div className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4">
-          <Link to={"/London"}>
-            <button
-              className="w-7"
-              // onClick={() => seeMore("London")}
-              type="button"
-            >
-              <img src={detailIcon} alt="detail" />
-            </button>
-          </Link>
+          <button
+            className="w-7"
+            onClick={() => seeMore("London")}
+            type="button"
+          >
+            <img src={detailIcon} alt="detail" />
+          </button>
           <div className="text-white flex flex-col items-end">
             <h4 className=" text-lg font-bold font-bold">LONDON</h4>
             <p>
@@ -181,7 +167,6 @@ const CurrentPollutionData = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

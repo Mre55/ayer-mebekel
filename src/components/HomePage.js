@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { fetchWeatherWithoutDispatch } from "../redux/weather/weatherReducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import DetailsPage from "./DetailsPage";
 import Form from "./Form";
@@ -11,56 +11,13 @@ import { fetchWeatherDispatch } from "../redux/weather/weatherReducer";
 import backIcon from "../images/backIcon.png";
 
 const HomePage = () => {
-  const [newPageData, setNewPageData] = useState();
-  const [firstPageData, setFirstPageData] = useState();
-  const [secondPageData, setSecondPageData] = useState();
-  const [thirdPageData, setThirdPageData] = useState();
-  const [fourthPageData, setFourthPageData] = useState();
-  const [selectedCity, setSelectedCity] = useState();
-  const [detailPage, setDetailPage] = useState(false);
-
   const dispatch = useDispatch();
-  const fetchNewData = async (lat, long) => {
-    const withoutDi = await fetchWeatherWithoutDispatch(lat, long);
-    dispatch(fetchWeatherDispatch());
-    const [first, second, third, fourth] = await Promise.all(
-      [
-        [50, 50],
-        [8, 37],
-        [40, 40],
-        [30, 20],
-      ].map((coord) => fetchWeatherWithoutDispatch(coord[0], coord[1]))
-    );
-    setNewPageData(withoutDi);
-    setFirstPageData(first);
-    setSecondPageData(second);
-    setThirdPageData(third);
-    setFourthPageData(fourth);
+
+  const fetchDataByInput = async (lat, long) => {
+    dispatch(fetchWeatherWithoutDispatch(lat, long));
   };
 
-  const seeMore = (city) => {
-    setSelectedCity(city);
-    setDetailPage(!detailPage);
-  };
-
-  const getSelectedCityData = () => {
-    switch (selectedCity) {
-      case "Hawassa":
-        return secondPageData;
-      case "Addis Ababa":
-        return firstPageData;
-      case "Hossana":
-        return thirdPageData;
-      case "London":
-        return fourthPageData;
-      case "New":
-        return newPageData;
-      default:
-        return firstPageData;
-    }
-  };
-
-  const selectedCityData = getSelectedCityData();
+  const [detailPage, setDetailPage] = useState(false);
 
   useEffect(() => {
     if (Object.keys(store.getState().weatherReducer).length === 0) {
@@ -68,13 +25,32 @@ const HomePage = () => {
     }
   }, []);
 
+  const seeMore = (city) => {
+    if (city === "Addis Ababa") {
+      dispatch(fetchWeatherWithoutDispatch(4, 5));
+    } else if (city === "Hawassa") {
+      dispatch(fetchWeatherWithoutDispatch(8, 37));
+    } else if (city === "Hossana") {
+      dispatch(fetchWeatherWithoutDispatch(22, 44));
+    } else if (city === "London") {
+      dispatch(fetchWeatherWithoutDispatch(17, 9));
+    }
+    setDetailPage(!detailPage);
+  };
+
+  const weatherReducer = useSelector((state) => state.weatherReducer);
+
+  const { coord = {}, list = [] } = weatherReducer;
+
   return (
     <div>
       <div className={`${detailPage ? "hidden" : ""}`}>
-        <Form seeMore={seeMore} fetchNewData={fetchNewData} />
+        <Form seeMore={seeMore} fetchDataByInput={fetchDataByInput} />
 
         <div className={`${detailPage ? "hidden" : ""}`}>
-          <CurrentPollutionData />
+          <CurrentPollutionData
+            seeMore={seeMore}
+          />
         </div>
       </div>
       <div className={`${detailPage ? "" : "hidden"}`}>
@@ -86,12 +62,7 @@ const HomePage = () => {
             DATA ABOUT POLLUTING GASES
           </p>
         </div>
-        {selectedCityData?.coord && (
-          <DetailsPage
-            coord={selectedCityData.coord}
-            list={selectedCityData.list}
-          />
-        )}
+        {weatherReducer && <DetailsPage coord={coord} list={list} />}
       </div>
     </div>
   );
