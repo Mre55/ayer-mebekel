@@ -45,7 +45,7 @@ const HomePage = () => {
   return (
     <div>
       <div className={`${detailPage ? "hidden" : ""}`}>
-        <Form seeMore={seeMore} fetchDataByInput={fetchDataByInput} />
+        <Form seeMore={seeMore} />
 
         <div className={`${detailPage ? "hidden" : ""}`}>
           <CurrentPollutionData

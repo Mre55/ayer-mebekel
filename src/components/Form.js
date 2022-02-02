@@ -1,27 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PropTypes } from 'prop-types';
+import { useDispatch } from "react-redux";
+import { fetchWeatherWithoutDispatch } from "../redux/weather/weatherReducer";
+
 
 const Form = (props) => {
-  const { seeMore, fetchDataByInput } = props;
+  const { seeMore } = props;
 
-  const [lat, setLat] = useState();
-  const [long, setLong] = useState();
+  const dispatch = useDispatch();
 
-  const handleLatChange = (e) => {
-    setLat(e.target.value);
-  };
-  const handleLongChange = (e) => {
-    setLong(e.target.value);
-  };
+  const handleSubmit = (lat, long) => {
+    dispatch(fetchWeatherWithoutDispatch(lat, long))
+  }
+
+  const clear = () => {}
 
   return (
     <div className="flex bg-[#5788e6] w-screen text-white px-3 items-center md: justify-evenly">
       <h2 className="text-3xl font-bold">Forecast air pollution data</h2>
       <div className="text-center py-4">
         <form
-          onSubmit={async (e) => {
+          onSubmit={(e) => {
             e.preventDefault();
-            await fetchDataByInput(e.target[0].value, e.target[1].value);
+            handleSubmit(e.target[0].value, e.target[1].value);
+            clear(e.target[0].value='', e.target[1].value='');
           }}
         >
           <label htmlFor="latitude">
@@ -31,9 +33,8 @@ const Form = (props) => {
               name="lat"
               id="latitude"
               type="number"
-              value={lat}
               placeholder="Enter a Latitude..."
-              onChange={() => handleLatChange}
+              onChange={(e) => e.target.value}
               required
             />
             <br />
@@ -46,8 +47,7 @@ const Form = (props) => {
               id="longitude"
               type="number"
               placeholder="Enter a Longitude..."
-              value={long}
-              onChange={() => handleLongChange}
+              onChange={(e) => e.target.value}
               required
             />
             <br />
@@ -66,7 +66,6 @@ const Form = (props) => {
 
 Form.propTypes = {
   seeMore: PropTypes.func.isRequired,
-  fetchDataByInput: PropTypes.func.isRequired,
 };
 
 export default Form;
