@@ -1,29 +1,31 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-function DetailsPage(props) {
+const DetailsPage = (props) => {
   const { coord, list } = props;
+
+  const dateObject = new Date((list.map((listData) => listData?.dt)) * 1000);
+  const humanDateFormat = dateObject.toLocaleString();
 
   return (
     <div>
       <div className="w-screen text-white items-center">
-
         <div className="flex flex-col items-end justify-center bg-[#5788e6] w-screen h-44 px-4">
           <h5 className="text-4xl font-bold">CURRENT</h5>
           <h5 className="text-4xl font-bold">COORDINATE</h5>
           <p className="text-lg font-light">
-            Longitude:
-            {coord.lon}
-          </p>
-          <p className="text-lg font-light">
             Latitude:
             {coord.lat}
+          </p>
+          <p className="text-lg font-light">
+            Longitude:
+            {coord.lon}
           </p>
         </div>
 
         <div className="flex py-5 px-4 justify-between bg-[#4369b2]">
           <p>Date and time, Unix, UTC </p>
-          <p>{list.map((listData) => listData?.dt)}</p>
+          <p>{humanDateFormat}</p>
         </div>
 
         <div className="flex py-5 px-4 justify-between bg-[#5788e6]">
@@ -105,11 +107,16 @@ function DetailsPage(props) {
       </div>
     </div>
   );
-}
+};
 
 DetailsPage.propTypes = {
-  coord: PropTypes.instanceOf(Object).isRequired,
-  list: PropTypes.instanceOf(Array).isRequired,
+  coord: PropTypes.instanceOf(Object),
+  list: PropTypes.instanceOf(Array),
+};
+
+DetailsPage.defaultProps = {
+  coord: {},
+  list: [],
 };
 
 export default DetailsPage;

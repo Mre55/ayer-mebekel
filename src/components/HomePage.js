@@ -1,98 +1,63 @@
 import React, { useEffect, useState } from 'react';
 
-import { fetchWeatherWithoutDispatch } from '../redux/weather/weatherReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchWeatherWithInput, fetchWeather } from '../redux/weather/weatherReducer';
 
 import DetailsPage from './DetailsPage';
 import Form from './Form';
 import CurrentPollutionData from './CurrentPollutionData';
+import store from '../redux/configureStore';
 import backIcon from '../images/backIcon.png';
 
 const HomePage = () => {
-  const [newPageData, setNewPageData] = useState();
-  const [firstPageData, setFirstPageData] = useState();
-  const [secondPageData, setSecondPageData] = useState();
-  const [thirdPageData, setThirdPageData] = useState();
-  const [fourthPageData, setFourthPageData] = useState();
-  const [selectedCity, setSelectedCity] = useState();
+  const dispatch = useDispatch();
+
   const [detailPage, setDetailPage] = useState(false);
 
-  const fetchNewData = async (lat, long) => {
-    const withoutDi = await fetchWeatherWithoutDispatch(lat, long);
-    const [first, second, third, fourth] = await Promise.all(
-      [
-        [50, 50],
-        [8, 37],
-        [40, 40],
-        [30, 20],
-      ].map((coord) => fetchWeatherWithoutDispatch(coord[0], coord[1])),
-    );
-    setNewPageData(withoutDi);
-    setFirstPageData(first);
-    setSecondPageData(second);
-    setThirdPageData(third);
-    setFourthPageData(fourth);
-  };
-
-  useEffect(async () => {
-    await fetchNewData(50, 50);
+  useEffect(() => {
+    if (Object.keys(store.getState().weatherReducer).length === 0) {
+      dispatch(fetchWeather());
+    }
   }, []);
 
   const seeMore = (city) => {
-    setSelectedCity(city);
+    if (city === 'Ethiopia') {
+      dispatch(fetchWeatherWithInput(42, 53));
+    } else if (city === 'Brazil') {
+      dispatch(fetchWeatherWithInput(8, 37));
+    } else if (city === 'USA') {
+      dispatch(fetchWeatherWithInput(22, 44));
+    } else if (city === 'Canada') {
+      dispatch(fetchWeatherWithInput(7, 39));
+    }
     setDetailPage(!detailPage);
   };
 
-  const getSelectedCityData = () => {
-    switch (selectedCity) {
-      case 'Hawassa':
-        return secondPageData;
-      case 'Addis Ababa':
-        return firstPageData;
-      case 'Hossana':
-        return thirdPageData;
-      case 'London':
-        return fourthPageData;
-      case 'New':
-        return newPageData;
-      default:
-        return firstPageData;
-    }
-  };
+  const weatherReducer = useSelector((state) => state.weatherReducer);
 
-  const selectedCityData = getSelectedCityData();
+  const { coord = {}, list = [] } = weatherReducer;
 
   return (
-    <div className="">
+    <div>
       <div className={`${detailPage ? 'hidden' : ''}`}>
-        <Form seeMore={seeMore} fetchNewData={fetchNewData} />
+        <Form seeMore={seeMore} />
 
         <div className={`${detailPage ? 'hidden' : ''}`}>
           <CurrentPollutionData
             seeMore={seeMore}
-            firstPageData={firstPageData}
-            secondPageData={secondPageData}
-            thirdPageData={thirdPageData}
-            fourthPageData={fourthPageData}
           />
         </div>
       </div>
       <div className={`${detailPage ? '' : 'hidden'}`}>
         <div className="flex items-center gap-14 bg-[#35538c] text-white px-3 ">
-          <button
-            className="w-10"
-            onClick={() => seeMore()}
-            type="button"
-          >
+          <button className="w-10" onClick={() => seeMore()} type="button">
             <img src={backIcon} alt="back icon" />
           </button>
-          <p className="text-sm text-white py-2 w-screen">DATA ABOUT POLLUTING GASES</p>
+          <p className="text-sm text-white py-2 w-screen">
+            DATA ABOUT POLLUTING GASES
+          </p>
         </div>
-        {selectedCityData?.coord && (
-          <DetailsPage
-            coord={selectedCityData.coord}
-            list={selectedCityData.list}
-          />
-        )}
+        {weatherReducer?.coord && (<DetailsPage coord={coord} list={list} />)}
       </div>
     </div>
   );
