@@ -177,12 +177,12 @@ const CurrentPollutionData = (props) => {
   );
 };
 
-// CurrentPollutionData.propTypes = {
-//   seeMore: PropTypes.func.isRequired,
-//   firstPageData: PropTypes.instanceOf(Object).isRequired,
-//   secondPageData: PropTypes.instanceOf(Object).isRequired,
-//   thirdPageData: PropTypes.instanceOf(Object).isRequired,
-//   fourthPageData: PropTypes.instanceOf(Object).isRequired,
-// };
+CurrentPollutionData.propTypes = {
+  seeMore: PropTypes.func.isRequired,
+  firstPageData: PropTypes.instanceOf(Object).isRequired,
+  secondPageData: PropTypes.instanceOf(Object).isRequired,
+  thirdPageData: PropTypes.instanceOf(Object).isRequired,
+  fourthPageData: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default CurrentPollutionData;

@@ -107,9 +107,9 @@ function DetailsPage(props) {
   );
 }
 
-// DetailsPage.propTypes = {
-//   coord: PropTypes.instanceOf(Object).isRequired,
-//   list: PropTypes.instanceOf(Array).isRequired,
-// };
+DetailsPage.propTypes = {
+  coord: PropTypes.instanceOf(Object).isRequired,
+  list: PropTypes.instanceOf(Array).isRequired,
+};
 
 export default DetailsPage;
