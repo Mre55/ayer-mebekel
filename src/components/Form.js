@@ -9,57 +9,58 @@ const Form = (props) => {
 
   const handleLatChange = (e) => {
     setLat(e.target.value);
+    console.log('e is ', e.target.value);
   };
   const handleLongChange = (e) => {
     setLong(e.target.value);
   };
 
   return (
-    <div>
-      <h2 className="text-4xl font-bold">Forecast air pollution data</h2>
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          await fetchNewData(e.target[0].value, e.target[1].value);
-        }}
-      >
-        <label htmlFor="latitude">
-          Latitude
-          <br />
+    <div className="flex bg-[#5788e6] w-screen text-white px-3 items-center md: justify-evenly">
+      <h2 className="text-3xl font-bold">Forecast air pollution data</h2>
+      <div className="text-center py-4">
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            await fetchNewData(e.target[0].value, e.target[1].value);
+          }}
+        >
+          <label htmlFor="latitude">
+            <p className="text-lg">Latitude</p>
+            <input
+              className="border-solid border-2 border-gray-50 my-1 rounded-full text-center text-black"
+              name="lat"
+              id="latitude"
+              type="number"
+              value={lat}
+              placeholder="Enter a Latitude..."
+              onChange={() => handleLatChange}
+              required
+            />
+            <br />
+          </label>
+          <label htmlFor="longitude">
+            <p className="text-lg">Longitude</p>
+            <input
+              className="border-solid border-2 border-gray-50 my-1 rounded-full text-center text-black"
+              name="long"
+              id="longitude"
+              type="number"
+              placeholder="Enter a Longitude..."
+              value={long}
+              onChange={() => handleLongChange}
+              required
+            />
+            <br />
+          </label>
           <input
-            className="border-solid border-2 border-sky-500"
-            name="lat"
-            id="latitude"
-            type="number"
-            value={lat}
-            placeholder="Enter a Latitude..."
-            onChange={() => handleLatChange}
-            required
+            onClick={() => seeMore('New')}
+            className="bg-blue-600 text-white w-20 text-lg rounded mt-4"
+            type="submit"
+            value="Submit"
           />
-          <br />
-        </label>
-        <label htmlFor="longitude">
-          Longitude
-          <br />
-          <input
-            className="border-solid border-2 border-sky-500"
-            name="long"
-            id="longitude"
-            type="number"
-            placeholder="Enter a Longitude..."
-            value={long}
-            onChange={() => handleLongChange}
-            required
-          />
-          <br />
-        </label>
-        <input
-          onClick={() => seeMore('New')}
-          className="bg-blue-600 text-white p-2 w-40 text-lg  rounded mt-4"
-          type="submit"
-          value="Submit"
-        />
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

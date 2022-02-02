@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  fetchWeatherWithoutDispatch,
-} from '../redux/weather/weatherReducer';
+import { fetchWeatherWithoutDispatch } from '../redux/weather/weatherReducer';
 
 import DetailsPage from './DetailsPage';
 import Form from './Form';
 import CurrentPollutionData from './CurrentPollutionData';
+import backIcon from '../images/backIcon.png';
 
 const HomePage = () => {
   const [newPageData, setNewPageData] = useState();
@@ -63,15 +62,11 @@ const HomePage = () => {
   const selectedCityData = getSelectedCityData();
 
   return (
-    <div>
+    <div className="">
       <div className={`${detailPage ? 'hidden' : ''}`}>
+        <Form seeMore={seeMore} fetchNewData={fetchNewData} />
 
-        <Form
-          seeMore={seeMore}
-          fetchNewData={fetchNewData}
-        />
-
-        <div className={`grid grid-cols-2 gap-6 p-4 ${detailPage ? 'hidden' : ''}`}>
+        <div className={`${detailPage ? 'hidden' : ''}`}>
           <CurrentPollutionData
             seeMore={seeMore}
             firstPageData={firstPageData}
@@ -82,13 +77,16 @@ const HomePage = () => {
         </div>
       </div>
       <div className={`${detailPage ? '' : 'hidden'}`}>
-        <button
-          className="bg-blue-600 text-white p-2 w-40 text-lg rounded float-right"
-          onClick={() => seeMore()}
-          type="button"
-        >
-          Back
-        </button>
+        <div className="flex items-center gap-14 bg-[#35538c] text-white px-3 ">
+          <button
+            className="w-10"
+            onClick={() => seeMore()}
+            type="button"
+          >
+            <img src={backIcon} alt="back icon" />
+          </button>
+          <p className="text-sm text-white py-2 w-screen">DATA ABOUT POLLUTING GASES</p>
+        </div>
         {selectedCityData?.coord && (
           <DetailsPage
             coord={selectedCityData.coord}
