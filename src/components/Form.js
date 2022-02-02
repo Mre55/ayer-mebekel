@@ -1,8 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { useDispatch } from "react-redux";
-import { fetchWeatherWithoutDispatch } from "../redux/weather/weatherReducer";
-
+import { useDispatch } from 'react-redux';
+import { fetchWeatherWithInput } from '../redux/weather/weatherReducer';
 
 const Form = (props) => {
   const { seeMore } = props;
@@ -10,20 +9,20 @@ const Form = (props) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (lat, long) => {
-    dispatch(fetchWeatherWithoutDispatch(lat, long))
-  }
+    dispatch(fetchWeatherWithInput(lat, long));
+  };
 
-  const clear = () => {}
+  const clear = () => {};
 
   return (
-    <div className="flex bg-[#5788e6] w-screen text-white px-3 items-center md: justify-evenly">
+    <div className="flex bg-[#5788e6] w-screen text-white px-3 items-center md:justify-evenly py-6">
       <h2 className="text-3xl font-bold">Forecast air pollution data</h2>
       <div className="text-center py-4">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleSubmit(e.target[0].value, e.target[1].value);
-            clear(e.target[0].value='', e.target[1].value='');
+            clear(e.target[0].value = '', e.target[1].value = '');
           }}
         >
           <label htmlFor="latitude">
@@ -56,7 +55,7 @@ const Form = (props) => {
             onClick={() => seeMore()}
             className="bg-blue-600 text-white w-20 text-lg rounded mt-4"
             type="submit"
-            value="Submit"
+            value="Search"
           />
         </form>
       </div>

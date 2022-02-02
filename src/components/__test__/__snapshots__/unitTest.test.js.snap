@@ -3,10 +3,10 @@
 exports[`Home page component snapshot tests renders correctly 1`] = `
 <div>
   <div
-    className=""
+    className="'detailPage' ? 'hidden' : ''"
   >
     <div
-      className="flex bg-[#5788e6] w-screen text-white px-3 items-center md: justify-evenly"
+      className="flex bg-[#5788e6] w-screen text-white px-3 items-center md:justify-evenly py-6"
     >
       <h2
         className="text-3xl font-bold"
@@ -61,17 +61,17 @@ exports[`Home page component snapshot tests renders correctly 1`] = `
             className="bg-blue-600 text-white w-20 text-lg rounded mt-4"
             onClick={[Function]}
             type="submit"
-            value="Submit"
+            value="Search"
           />
         </form>
       </div>
     </div>
     <div
-      className=""
+      className="'detailPage' ? 'hidden' : ''"
     />
   </div>
   <div
-    className="hidden"
+    className="'detailPage' ? '' : 'hidden'"
   >
     <div
       className="flex items-center gap-14 bg-[#35538c] text-white px-3 "
@@ -109,6 +109,7 @@ exports[`Home page component snapshot tests renders correctly 2`] = `
     className="text-center py-4"
   >
     <form
+      noValidate={true}
       onSubmit={[Function]}
     >
       <label
@@ -123,10 +124,10 @@ exports[`Home page component snapshot tests renders correctly 2`] = `
           className="border-solid border-2 border-gray-50 my-1 rounded-full text-center text-black"
           id="latitude"
           name="lat"
-          onChange={[Function]}
           placeholder="Enter a Latitude..."
           required={true}
           type="number"
+          value="lat"
         />
         <br />
       </label>
@@ -142,16 +143,15 @@ exports[`Home page component snapshot tests renders correctly 2`] = `
           className="border-solid border-2 border-gray-50 my-1 rounded-full text-center text-black"
           id="longitude"
           name="long"
-          onChange={[Function]}
           placeholder="Enter a Longitude..."
           required={true}
           type="number"
+          value="long"
         />
         <br />
       </label>
       <input
         className="bg-blue-600 text-white w-20 text-lg rounded mt-4"
-        onClick={[Function]}
         type="submit"
         value="Submit"
       />
@@ -170,7 +170,7 @@ exports[`Home page component snapshot tests renders correctly 3`] = `
     <h2
       className="text-2xl font-bold text-white"
     >
-      አየር ብክለት 
+      የአየር ብክለት 
     </h2>
     <h2
       className="text-lg font-bold text-white"

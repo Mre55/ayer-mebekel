@@ -4,7 +4,6 @@ import {
   fetchWeatherSuccess,
 } from '../../redux/weather/weatherReducer';
 
-
 describe('Dispatch actions tests', () => {
   const middlewares = [];
   const mockStore = configureStore(middlewares);
