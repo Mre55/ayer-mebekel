@@ -1,0 +1,362 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page component snapshot tests renders correctly 1`] = `
+<div>
+  <div
+    className=""
+  >
+    <div
+      className="flex bg-[#5788e6] w-screen text-white px-3 items-center md: justify-evenly"
+    >
+      <h2
+        className="text-3xl font-bold"
+      >
+        Forecast air pollution data
+      </h2>
+      <div
+        className="text-center py-4"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <label
+            htmlFor="latitude"
+          >
+            <p
+              className="text-lg"
+            >
+              Latitude
+            </p>
+            <input
+              className="border-solid border-2 border-gray-50 my-1 rounded-full text-center text-black"
+              id="latitude"
+              name="lat"
+              onChange={[Function]}
+              placeholder="Enter a Latitude..."
+              required={true}
+              type="number"
+            />
+            <br />
+          </label>
+          <label
+            htmlFor="longitude"
+          >
+            <p
+              className="text-lg"
+            >
+              Longitude
+            </p>
+            <input
+              className="border-solid border-2 border-gray-50 my-1 rounded-full text-center text-black"
+              id="longitude"
+              name="long"
+              onChange={[Function]}
+              placeholder="Enter a Longitude..."
+              required={true}
+              type="number"
+            />
+            <br />
+          </label>
+          <input
+            className="bg-blue-600 text-white w-20 text-lg rounded mt-4"
+            onClick={[Function]}
+            type="submit"
+            value="Submit"
+          />
+        </form>
+      </div>
+    </div>
+    <div
+      className=""
+    >
+      <div
+        className="w-screen"
+      >
+        <h2
+          className="bg-[#35538c] text-sm text-white md:text-center pl-4 py-1"
+        >
+          CURRENT AIR POLLUTION DATA
+        </h2>
+        <div
+          className="grid grid-cols-2"
+        >
+          <div
+            className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4"
+          >
+            <button
+              className="w-7"
+              onClick={[Function]}
+              type="button"
+            >
+              <img
+                alt="detail"
+                src="detailIcon.png"
+              />
+            </button>
+            <div
+              className="text-white flex flex-col items-end"
+            >
+              <h4
+                className=" text-lg font-bold font-bold"
+              >
+                ADDIS ABABA
+              </h4>
+              <p>
+                 
+                Air Quality:
+              </p>
+            </div>
+          </div>
+          <div
+            className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4"
+          >
+            <button
+              className="w-7"
+              onClick={[Function]}
+              type="button"
+            >
+              <img
+                alt="detail"
+                src="detailIcon.png"
+              />
+            </button>
+            <div
+              className="text-white flex flex-col items-end"
+            >
+              <h4
+                className=" text-lg font-bold font-bold"
+              >
+                HAWASSA
+              </h4>
+              <p>
+                 
+                Air Quality:
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="grid grid-cols-2"
+        >
+          <div
+            className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4"
+          >
+            <button
+              className="w-7"
+              onClick={[Function]}
+              type="button"
+            >
+              <img
+                alt="detail"
+                src="detailIcon.png"
+              />
+            </button>
+            <div
+              className="text-white flex flex-col items-end"
+            >
+              <h4
+                className="text-lg font-bold font-bold"
+              >
+                HOSSANA
+              </h4>
+              <p>
+                 
+                Air Quality:
+              </p>
+            </div>
+          </div>
+          <div
+            className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4"
+          >
+            <button
+              className="w-7"
+              onClick={[Function]}
+              type="button"
+            >
+              <img
+                alt="detail"
+                src="detailIcon.png"
+              />
+            </button>
+            <div
+              className="text-white flex flex-col items-end"
+            >
+              <h4
+                className=" text-lg font-bold font-bold"
+              >
+                LONDON
+              </h4>
+              <p>
+                 
+                Air Quality:
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="grid grid-cols-2"
+        >
+          <div
+            className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4"
+          >
+            <button
+              className="w-7"
+              onClick={[Function]}
+              type="button"
+            >
+              <img
+                alt="detail"
+                src="detailIcon.png"
+              />
+            </button>
+            <div
+              className="text-white flex flex-col items-end"
+            >
+              <h4
+                className=" text-lg font-bold font-bold"
+              >
+                ADDIS ABABA
+              </h4>
+              <p>
+                 
+                Air Quality:
+              </p>
+            </div>
+          </div>
+          <div
+            className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4"
+          >
+            <button
+              className="w-7"
+              onClick={[Function]}
+              type="button"
+            >
+              <img
+                alt="detail"
+                src="detailIcon.png"
+              />
+            </button>
+            <div
+              className="text-white flex flex-col items-end"
+            >
+              <h4
+                className=" text-lg font-bold font-bold"
+              >
+                HAWASSA
+              </h4>
+              <p>
+                 
+                Air Quality:
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          className="grid grid-cols-2"
+        >
+          <div
+            className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4"
+          >
+            <button
+              className="w-7"
+              onClick={[Function]}
+              type="button"
+            >
+              <img
+                alt="detail"
+                src="detailIcon.png"
+              />
+            </button>
+            <div
+              className="text-white flex flex-col items-end"
+            >
+              <h4
+                className=" text-lg font-bold font-bold"
+              >
+                HOSSANA
+              </h4>
+              <p>
+                 
+                Air Quality:
+              </p>
+            </div>
+          </div>
+          <div
+            className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4"
+          >
+            <button
+              className="w-7"
+              onClick={[Function]}
+              type="button"
+            >
+              <img
+                alt="detail"
+                src="detailIcon.png"
+              />
+            </button>
+            <div
+              className="text-white flex flex-col items-end"
+            >
+              <h4
+                className=" text-lg font-bold font-bold"
+              >
+                LONDON
+              </h4>
+              <p>
+                 
+                Air Quality:
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="hidden"
+  >
+    <div>
+      <div
+        className="flex items-center gap-14 bg-[#35538c] text-white px-3 "
+      >
+        <button
+          className="w-10"
+          onClick={[Function]}
+          type="button"
+        >
+          <img
+            alt="back icon"
+            src="backIcon.png"
+          />
+        </button>
+        <p
+          className="text-sm text-white py-2 w-screen"
+        >
+          DATA ABOUT POLLUTING GASES
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Home page component snapshot tests renders correctly 2`] = `
+<nav
+  className=""
+>
+  <div
+    className="flex items-end justify-center py-2 ring-4 bg-[#4369b2]"
+  >
+    <h2
+      className="text-2xl font-bold text-white"
+    >
+      አየር ብክለት 
+    </h2>
+    <h2
+      className="text-lg font-bold text-white"
+    >
+       (Air pollution)
+    </h2>
+  </div>
+</nav>
+`;

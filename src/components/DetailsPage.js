@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchWeatherDispatch } from '../redux/weather/weatherReducer';
+import store from '../redux/configureStore';
 
-function DetailsPage(props) {
-  const { coord, list } = props;
+function DetailsPage() {
+  
+  const weatherReducer = useSelector((state) => state.weatherReducer);
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (Object.keys(store.getState().weatherReducer).length === 0) {
+      dispatch(fetchWeatherDispatch());
+    }
+  }, []);
+
+  console.log('incoming weatherReducer ', weatherReducer)
+
+  const { coord = {}, list = [] } = weatherReducer;
 
   return (
     <div>
@@ -107,9 +123,9 @@ function DetailsPage(props) {
   );
 }
 
-DetailsPage.propTypes = {
-  coord: PropTypes.instanceOf(Object).isRequired,
-  list: PropTypes.instanceOf(Array).isRequired,
-};
+// DetailsPage.propTypes = {
+//   coord: PropTypes.instanceOf(Object).isRequired,
+//   list: PropTypes.instanceOf(Array).isRequired,
+// };
 
 export default DetailsPage;
