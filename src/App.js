@@ -5,7 +5,6 @@ import {
 import { Provider } from 'react-redux';
 
 import HomePage from './components/HomePage';
-import DetailsPage from './components/DetailsPage';
 import TopBar from './components/TopBar';
 import store from './redux/configureStore';
 
@@ -17,7 +16,6 @@ function App() {
         <div className="pageContainer">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/detailsPage" element={<DetailsPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>
         </div>
