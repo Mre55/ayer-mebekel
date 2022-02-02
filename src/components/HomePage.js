@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchWeatherWithInput, fetchWeather } from '../redux/weather/weatherReducer';
+import { fetchWeatherWithInput } from '../redux/weather/weatherReducer';
 
 import DetailsPage from './DetailsPage';
 import Form from './Form';
 import CurrentPollutionData from './CurrentPollutionData';
-import store from '../redux/configureStore';
 import backIcon from '../images/backIcon.png';
 
 const HomePage = () => {
   const dispatch = useDispatch();
 
   const [detailPage, setDetailPage] = useState(false);
-
-  useEffect(() => {
-    if (Object.keys(store.getState().weatherReducer).length === 0) {
-      dispatch(fetchWeather());
-    }
-  }, []);
 
   const seeMore = (city) => {
     if (city === 'Ethiopia') {
@@ -43,9 +36,7 @@ const HomePage = () => {
         <Form seeMore={seeMore} />
 
         <div className={`${detailPage ? 'hidden' : ''}`}>
-          <CurrentPollutionData
-            seeMore={seeMore}
-          />
+          <CurrentPollutionData seeMore={seeMore} />
         </div>
       </div>
       <div className={`${detailPage ? '' : 'hidden'}`}>
@@ -57,7 +48,7 @@ const HomePage = () => {
             DATA ABOUT POLLUTING GASES
           </p>
         </div>
-        {weatherReducer?.coord && (<DetailsPage coord={coord} list={list} />)}
+        {weatherReducer?.coord && <DetailsPage coord={coord} list={list} />}
       </div>
     </div>
   );
