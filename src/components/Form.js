@@ -9,7 +9,6 @@ const Form = (props) => {
 
   const handleLatChange = (e) => {
     setLat(e.target.value);
-    console.log('e is ', e.target.value);
   };
   const handleLongChange = (e) => {
     setLong(e.target.value);
