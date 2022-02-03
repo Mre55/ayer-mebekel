@@ -1,14 +1,49 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
+import backIcon from '../images/backIcon.png';
+import { fetchWeatherWithInput } from '../redux/weather/weatherReducer';
 
-const DetailsPage = (props) => {
-  const { coord, list } = props;
+const DetailsPage = () => {
+  const dispatch = useDispatch();
+
+  const { countryName } = useParams();
+
+  const formLatAndLong = countryName.split('&');
+
+  useEffect(() => {
+    if (countryName === 'Ethiopia') {
+      dispatch(fetchWeatherWithInput(42, 53));
+    } else if (countryName === 'Brazil') {
+      dispatch(fetchWeatherWithInput(8, 37));
+    } else if (countryName === 'USA') {
+      dispatch(fetchWeatherWithInput(22, 44));
+    } else if (countryName === 'Canada') {
+      dispatch(fetchWeatherWithInput(7, 39));
+    } else {
+      dispatch(fetchWeatherWithInput(formLatAndLong[0], formLatAndLong[1]));
+    }
+  }, []);
+
+  const navigate = useNavigate();
+
+  const weatherReducer = useSelector((state) => state.weatherReducer);
+
+  const { coord = {}, list = [] } = weatherReducer;
 
   const dateObject = new Date((list.map((listData) => listData?.dt)) * 1000);
   const humanDateFormat = dateObject.toLocaleString();
 
   return (
     <div>
+      <div className="flex items-center gap-14 bg-[#35538c] text-white px-3 ">
+        <button className="w-10" onClick={() => navigate('/')} type="button">
+          <img src={backIcon} alt="back icon" />
+        </button>
+        <p className="text-sm text-white py-2 w-screen">
+          DATA ABOUT POLLUTING GASES
+        </p>
+      </div>
       <div className="w-screen text-white items-center">
         <div className="flex flex-col items-end justify-center bg-[#5788e6] w-screen h-44 px-4">
           <h5 className="text-4xl font-bold">CURRENT</h5>
@@ -109,14 +144,14 @@ const DetailsPage = (props) => {
   );
 };
 
-DetailsPage.propTypes = {
-  coord: PropTypes.instanceOf(Object),
-  list: PropTypes.instanceOf(Array),
-};
+// DetailsPage.propTypes = {
+//   coord: PropTypes.instanceOf(Object),
+//   list: PropTypes.instanceOf(Array),
+// };
 
-DetailsPage.defaultProps = {
-  coord: {},
-  list: [],
-};
+// DetailsPage.defaultProps = {
+//   coord: {},
+//   list: [],
+// };
 
 export default DetailsPage;

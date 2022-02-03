@@ -3,23 +3,11 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Form from '../__mock__/Form';
 import TopBar from '../TopBar';
-import HomePage from '../__mock__/HomePage';
 
-describe('Home page component snapshot tests', () => {
+describe('Components snapshot tests', () => {
   const mockStore = configureStore();
 
-  it('renders correctly', () => {
-    const tree = renderer
-      .create(
-        <Provider store={mockStore({})}>
-          <HomePage />
-        </Provider>,
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly', () => {
+  it('Form page renders correctly', () => {
     const tree = renderer
       .create(
         <Provider store={mockStore({})}>
@@ -30,7 +18,7 @@ describe('Home page component snapshot tests', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders correctly', () => {
+  it('TopBar renders correctly', () => {
     const tree = renderer
       .create(
         <Provider store={mockStore({})}>
