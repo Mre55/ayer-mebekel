@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components snapshot tests Form page renders correctly 1`] = `
+<div
+  className="flex bg-[#5788e6] w-screen text-white px-3 items-center md: justify-evenly"
+>
+  <h2
+    className="text-3xl font-bold"
+  >
+    Forecast air pollution data
+  </h2>
+  <div
+    className="text-center py-4"
+  >
+    <form
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <label
+        htmlFor="latitude"
+      >
+        <p
+          className="text-lg"
+        >
+          Latitude
+        </p>
+        <input
+          className="border-solid border-2 border-gray-50 my-1 rounded-full text-center text-black"
+          id="latitude"
+          name="lat"
+          placeholder="Enter a Latitude..."
+          required={true}
+          type="number"
+          value="lat"
+        />
+        <br />
+      </label>
+      <label
+        htmlFor="longitude"
+      >
+        <p
+          className="text-lg"
+        >
+          Longitude
+        </p>
+        <input
+          className="border-solid border-2 border-gray-50 my-1 rounded-full text-center text-black"
+          id="longitude"
+          name="long"
+          placeholder="Enter a Longitude..."
+          required={true}
+          type="number"
+          value="long"
+        />
+        <br />
+      </label>
+      <input
+        className="bg-blue-600 text-white w-20 text-lg rounded mt-4"
+        type="submit"
+        value="Submit"
+      />
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Components snapshot tests TopBar renders correctly 1`] = `
+<nav
+  className=""
+>
+  <div
+    className="flex items-end justify-center py-2 ring-4 bg-[#4369b2]"
+  >
+    <h2
+      className="text-2xl font-bold text-white"
+    >
+      የአየር ብክለት 
+    </h2>
+    <h2
+      className="text-lg font-bold text-white"
+    >
+       (Air pollution)
+    </h2>
+  </div>
+</nav>
+`;
