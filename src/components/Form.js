@@ -1,15 +1,17 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import { fetchWeatherWithInput } from '../redux/weather/weatherReducer';
 
-const Form = (props) => {
-  const { seeMore } = props;
-
+const Form = () => {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (lat, long) => {
     dispatch(fetchWeatherWithInput(lat, long));
+    navigate(`/country/${lat}&${long}`);
   };
 
   const clear = () => {};
@@ -52,7 +54,6 @@ const Form = (props) => {
             <br />
           </label>
           <input
-            onClick={() => seeMore()}
             className="bg-blue-600 text-white w-20 text-lg rounded mt-4"
             type="submit"
             value="Search"
@@ -61,10 +62,6 @@ const Form = (props) => {
       </div>
     </div>
   );
-};
-
-Form.propTypes = {
-  seeMore: PropTypes.func.isRequired,
 };
 
 export default Form;

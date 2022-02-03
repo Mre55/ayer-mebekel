@@ -1,11 +1,10 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
+
+import { useNavigate } from 'react-router-dom';
 import detailIcon from '../images/detailIcon.png';
 
-const CurrentPollutionData = (props) => {
-  const {
-    seeMore,
-  } = props;
+const CurrentPollutionData = () => {
+  const navigate = useNavigate();
 
   return (
     <div className="w-screen">
@@ -16,7 +15,9 @@ const CurrentPollutionData = (props) => {
         <div className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4">
           <button
             className="w-7"
-            onClick={() => seeMore('Ethiopia')}
+            onClick={() => {
+              navigate('/country/Ethiopia');
+            }}
             type="button"
           >
             <img src={detailIcon} alt="detail" />
@@ -34,7 +35,9 @@ const CurrentPollutionData = (props) => {
         <div className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4">
           <button
             className="w-7"
-            onClick={() => seeMore('Brazil')}
+            onClick={() => {
+              navigate('/country/Brazil');
+            }}
             type="button"
           >
             <img src={detailIcon} alt="detail" />
@@ -54,7 +57,9 @@ const CurrentPollutionData = (props) => {
         <div className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4">
           <button
             className="w-7"
-            onClick={() => seeMore('USA')}
+            onClick={() => {
+              navigate('/country/USA');
+            }}
             type="button"
           >
             <img src={detailIcon} alt="detail" />
@@ -71,7 +76,9 @@ const CurrentPollutionData = (props) => {
         <div className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4">
           <button
             className="w-7"
-            onClick={() => seeMore('Canada')}
+            onClick={() => {
+              navigate('/country/Canada');
+            }}
             type="button"
           >
             <img src={detailIcon} alt="detail" />
@@ -91,7 +98,9 @@ const CurrentPollutionData = (props) => {
         <div className="flex flex-col items-end bg-[#4269b0] h-44 gap-8 p-4">
           <button
             className="w-7"
-            onClick={() => seeMore('Ethiopia')}
+            onClick={() => {
+              navigate('/country/Ethiopia');
+            }}
             type="button"
           >
             <img src={detailIcon} alt="detail" />
@@ -109,7 +118,9 @@ const CurrentPollutionData = (props) => {
         <div className="flex flex-col items-end bg-[#3d60a3] h-44 gap-8 p-4">
           <button
             className="w-7"
-            onClick={() => seeMore('Canada')}
+            onClick={() => {
+              navigate('/country/Canada');
+            }}
             type="button"
           >
             <img src={detailIcon} alt="detail" />
@@ -127,10 +138,6 @@ const CurrentPollutionData = (props) => {
 
     </div>
   );
-};
-
-CurrentPollutionData.propTypes = {
-  seeMore: PropTypes.func.isRequired,
 };
 
 export default CurrentPollutionData;
