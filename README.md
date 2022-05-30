@@ -26,10 +26,6 @@ Here you can take a look at the different pages for the mobile version
 
 <img width="765" alt="Screen Shot 2021-12-08 at 6 16 50 PM" src="https://user-images.githubusercontent.com/34578631/152223707-38863111-2892-4757-b2f9-447fa6bf47e3.png">
 
-## Video recording link
-
-[Video](https://www.loom.com/share/4e3f4509d39a462e97ef0775384bc8f8)
-
 ## ✅ Learning objectives
 
 - Fetch data from a public API
